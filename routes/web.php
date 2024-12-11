@@ -5,6 +5,7 @@ use App\Http\Controllers\BlogController;
 use Illuminate\Support\Facades\Route;
 
 Route::get('/', [BlogController::class, 'index'])->name('blogs.index');
+Route::get('/view/{blog}', [BlogController::class, 'view'])->name('blogs.view');
 
 Route::get('/dashboard', function () {
     return view('dashboard');

@@ -16,4 +16,14 @@ class BlogController extends Controller
             'blogs' => $blogs
         ]);
     }
+    public function view(Blog $blog)
+    {
+
+        $user = DB::table('users')->select('name')->where('id', $blog->user_id)->first();
+        // dd($blog);
+        return view('blogs.view', [
+            'blog' => $blog,
+            'user' => $user
+        ]);
+    }
 }

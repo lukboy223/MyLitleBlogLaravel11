@@ -3,8 +3,7 @@
     "type": "module",
     "scripts": {
         "build": "vite build",
-        "dev": "vite",
-        "sass": "sass -w resources/style/scss:resources/style/css"
+        "dev": "vite"
         
     },
     "devDependencies": {
