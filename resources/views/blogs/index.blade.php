@@ -13,15 +13,22 @@
     <header>
         <nav>
             @guest
-            <a href="{{ route('login') }}">login</a>
+            <a href="{{ route('login') }}">login</a><br>
             <a href="{{ route('register') }}">register</a>
             @endguest
+            @auth
+            <a href="">Create Blog</a><br>
+            <form method="POST" action="{{ route('logout') }}">
+                @csrf
+                <input type="submit" value="logout">
+            </form>
+            @endauth
         </nav>
     </header>
     <main>
-        <section class="w-full pl-60">
+        <section class="w-full pl-60 pr-60">
             @foreach ($blogs as $blog)
-                <div class="m-10">
+                <div class="m-5 p-5 border-2 border-black">
                     <a href="{{route('blogs.view', $blog->id)}}">
                         <h2>{{ $blog->title }}</h2>
                     </a>

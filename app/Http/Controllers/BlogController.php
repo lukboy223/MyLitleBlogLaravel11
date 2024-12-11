@@ -18,12 +18,15 @@ class BlogController extends Controller
     }
     public function view(Blog $blog)
     {
-
         $user = DB::table('users')->select('name')->where('id', $blog->user_id)->first();
-        // dd($blog);
+        $comments = DB::table('comments')
+        ->join('users', 'comments.user_id', '=', 'users.id')
+        ->select('content', 'name')->where('blog_id', $blog->id)->simplePaginate(10);
+
         return view('blogs.view', [
             'blog' => $blog,
-            'user' => $user
+            'user' => $user,
+            'comments' => $comments,
         ]);
     }
 }
